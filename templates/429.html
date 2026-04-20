@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Too Many Requests - Vortex</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #E8D5F2 0%, #C4A7D7 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .error-container {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            border: 4px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 15px 50px rgba(108, 91, 123, 0.3);
+            max-width: 600px;
+        }
+        
+        .error-icon {
+            font-size: 8rem;
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #FF9AA2, #FFB3BA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            color: #6C5B7B;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .btn-home {
+            background: linear-gradient(135deg, #5DBAA4, #7DD3BD);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            box-shadow: 0 5px 20px rgba(93, 186, 164, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(93, 186, 164, 0.4);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="error-container">
+    <div class="error-icon">⏱️</div>
+    <h1>Too Many Requests</h1>
+    <p>
+        Whoa there! You're moving too fast! 🚀<br>
+        Please wait a moment before trying again.<br>
+        This helps us keep Vortex secure for everyone. 🔒
+    </p>
+    <a href="{{ url_for('home') }}" class="btn btn-home">
+        <i class="bi bi-house-door-fill"></i> Back to Home
+    </a>
+</div>
+
+</body>
+</html>
