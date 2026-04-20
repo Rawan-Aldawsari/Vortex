@@ -1169,6 +1169,50 @@ def ratelimit_handler(e):
     return render_template('429.html', error=e), 429
 
 # ================= Run Server =================
+from flask import send_file
+import sqlite3
+import openpyxl
+
+@app.route('/export-data')
+def export_data():
+    conn = sqlite3.connect('instance/vortex.db')
+    cursor = conn.cursor()
+
+    tables = [
+        "user",
+        "daily_challenge",
+        "admin",
+        "subject",
+        "quiz_result",
+        "quiz_battle",
+        "puzzle_game",
+        "chapter",
+        "battle_participant",
+        "upload",
+        "review"
+    ]
+
+    wb = openpyxl.Workbook()
+    wb.remove(wb.active)
+
+    for table in tables:
+        ws = wb.create_sheet(title=table)
+
+        cursor.execute(f"SELECT * FROM {table}")
+        rows = cursor.fetchall()
+
+        columns = [desc[0] for desc in cursor.description]
+        ws.append(columns)
+
+        for row in rows:
+            ws.append(row)
+
+    file_path = "all_data.xlsx"
+    wb.save(file_path)
+
+    conn.close()
+
+    return send_file(file_path, as_attachment=True)
 if __name__ == '__main__':
     print("=" * 60)
     print("🚀 VORTEX - AI-Powered Learning Platform")
