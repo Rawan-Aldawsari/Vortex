@@ -195,4 +195,4 @@ Academic research project – educational use permitted.
 We dedicate this work to students, researchers, and educators seeking smarter ways to learn.
 
 > “And say: My Lord, increase me in knowledge.”  
-> Quran 20:114
+> Quran 20:114 
